@@ -1,5 +1,3 @@
-//your code here
-
 document.addEventListener("DOMContentLoaded", () => {
     const deck = document.getElementById("deck");
     const shuffleBtn = document.getElementById("shuffle");
@@ -43,7 +41,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         holder.addEventListener("drop", (e) => {
             e.preventDefault();
-            const cardId = e.dataTransfer.setData ? e.dataTransfer.getData("text/plain") : null;
+            const cardId = e.dataTransfer.getData("text/plain");
             const card = document.getElementById(cardId);
             if (!card) return;
 
@@ -76,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const whiteboxes = Array.from(deck.querySelectorAll(".whitebox"));
         for (let i = whiteboxes.length - 1; i > 0; i--) {
             const j = Math.floor(Math.random() * (i + 1));
-            deck.appendChild(whiteboxes[j]);
+            deck.insertBefore(whiteboxes[j], whiteboxes[i].nextSibling);
         }
     }
 
@@ -125,12 +123,15 @@ document.addEventListener("DOMContentLoaded", () => {
         if (saved) {
             try {
                 const state = JSON.parse(saved);
+                let hasLoaded = false;
                 cards.forEach(card => {
                     const loc = state[card.id];
                     if (loc && loc !== "deck") {
-                        const holder = document.getElementById(loc)?.closest(".placed");
+                        const holderImg = document.getElementById(loc);
+                        const holder = holderImg ? holderImg.closest(".placed") : null;
                         if (holder) {
                             holder.appendChild(card);
+                            hasLoaded = true;
                         } else {
                             putInDeck(card);
                         }
@@ -138,6 +139,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         putInDeck(card);
                     }
                 });
+                if (!hasLoaded) {
+                    shuffleDeck();
+                }
             } catch (e) {
                 initFresh();
             }
@@ -170,7 +174,6 @@ document.addEventListener("DOMContentLoaded", () => {
         shuffleDeck();
         wonDiv.style.display = "none";
         wonDiv.classList.add("hide");
-        localStorage.clear();
         saveState();
     });
 
@@ -180,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
             shuffleDeck();
             wonDiv.style.display = "none";
             wonDiv.classList.add("hide");
-            localStorage.clear();
             saveState();
         });
     }
