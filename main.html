@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deck of Cards</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+
+    <div id="mega">
+        <h1 class="heading">Deck of Cards</h1>
+        <div class="allCardContainer" id="deck">
+            <div class="whitebox">
+                <div class="whitebox2" draggable="true" id="0">
+                    <img src="https://storage.googleapis.com/acciojob-open-file-collections/2S.jpg" draggable="true" alt="cardimages" class="imgsbox">
+                </div>
+            </div>
+            <div class="whitebox">
+                <div class="whitebox2" draggable="true" id="1">
+                    <img src="https://storage.googleapis.com/acciojob-open-file-collections/4C.jpg" draggable="true" alt="cardimages" class="imgsbox">
+                </div>
+            </div>
+            <div class="whitebox">
+                <div class="whitebox2" draggable="true" id="2">
+                    <img src="https://storage.googleapis.com/acciojob-open-file-collections/10C.jpg" draggable="true" alt="cardimages" class="imgsbox">
+                </div>
+            </div>
+            <div class="whitebox">
+                <div class="whitebox2" draggable="true" id="3">
+                    <img src="https://storage.googleapis.com/acciojob-open-file-collections/10D.jpg" draggable="true" alt="cardimages" class="imgsbox">
+                </div>
+            </div>
+            <div class="whitebox">
+                <div class="whitebox2" draggable="true" id="4">
+                    <img src="https://storage.googleapis.com/acciojob-open-file-collections/10S.jpg" draggable="true" alt="cardimages" class="imgsbox">
+                </div>
+            </div>
+        </div>
+        <div class="typesOfCards" id="types">
+            <div class="placed">
+                <img src="https://storage.googleapis.com/acciojob-open-file-collections/club.png" alt="Deck" class="placed" id="100">
+            </div>
+            <div class="placed" draggable="true" id="51">
+                <img src="https://storage.googleapis.com/acciojob-open-file-collections/diamond.jpg" alt="Deck" class="placed" id="101">
+            </div>
+            <div class="placed" draggable="true" id="51">
+                <img src="https://storage.googleapis.com/acciojob-open-file-collections/heart.png" alt="Deck" class="placed" id="102">
+            </div>
+            <div class="placed" draggable="true" id="51">
+                <img src="https://storage.googleapis.com/acciojob-open-file-collections/spade.png" alt="Deck" class="placed" id="103">
+            </div>
+        </div>
+
+        <div class="won" id="won">
+            <div class="result" id="result">
+                <h3>You Won </h3>
+                <button id="reset">Reset</button>
+            </div>
+        </div>
+        <button id="shuffle">Shuffle</button>
+    </div>
+
+</body>
+
+</html>
